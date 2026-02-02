@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative AI Tools for Research</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f4fd 50%, #fff0f5 100%);
+            overflow-x: hidden;
+        }
+        .presentation-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ffffff 0%, #fafbff 100%);
+            padding: 60px;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            overflow-y: auto;
+            animation: slideIn 0.5s ease-in-out;
+            box-shadow: inset 0 0 100px rgba(102, 126, 234, 0.05);
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 20px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .slide {
+                padding: 15px;
+                font-size: 12px;
+            }
+        }
+        .slide.active {
+            display: block;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        h1 {
+            background: linear-gradient(135deg, #6b73ff, #9c88ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            border-bottom: 3px solid #a8b3ff;
+            padding-bottom: 10px;
+            font-size: 3em;
+            margin-top: 20px;
+            font-weight: 700;
+        }
+        h2 {
+            color: #4a5568;
+            font-size: 2.2em;
+            margin-top: 30px;
+            font-weight: 600;
+        }
+        h3 {
+            color: #6b46c1;
+            font-size: 1.8em;
+            margin-top: 25px;
+            font-weight: 600;
+        }
+        
+        /* Mobile Typography */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+                margin-top: 10px;
+            }
+            h2 {
+                font-size: 1.6em;
+                margin-top: 20px;
+            }
+            h3 {
+                font-size: 1.3em;
+                margin-top: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+                margin-top: 5px;
+            }
+            h2 {
+                font-size: 1.3em;
+                margin-top: 15px;
+            }
+            h3 {
+                font-size: 1.1em;
+                margin-top: 10px;
+            }
+        }
+        .tool-card {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f0f4ff 100%);
+            color: #374151;
+            border-left: 5px solid #6366f1;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 15px;
+            font-size: 1.05em;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.2);
+            background: linear-gradient(135deg, #ddd6fe 0%, #ede9fe 100%);
+        }
+        .research-apps {
+            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+            color: #374151;
+            border-left: 5px solid #10b981;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 15px;
+            font-size: 1.05em;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(16, 185, 129, 0.1);
+        }
+        .research-apps:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(16, 185, 129, 0.2);
+            background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+        }
+        
+        /* Mobile Card Styles */
+        @media (max-width: 768px) {
+            .tool-card {
+                padding: 15px;
+                margin: 15px 0;
+                font-size: 0.95em;
+                border-radius: 10px;
+            }
+            .research-apps {
+                padding: 12px;
+                margin: 12px 0;
+                font-size: 0.95em;
+                border-radius: 10px;
+            }
+            .tool-card:hover, .research-apps:hover {
+                transform: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tool-card {
+                padding: 10px;
+                margin: 10px 0;
+                font-size: 0.85em;
+                border-radius: 8px;
+            }
+            .research-apps {
+                padding: 8px;
+                margin: 8px 0;
+                font-size: 0.85em;
+                border-radius: 8px;
+            }
+        }
+        ul {
+            line-height: 2;
+            font-size: 1.1em;
+        }
+        li {
+            margin: 12px 0;
+        }
+        
+        /* Mobile List Styles */
+        @media (max-width: 768px) {
+            ul {
+                line-height: 1.6;
+                font-size: 1em;
+                padding-left: 20px;
+            }
+            li {
+                margin: 8px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            ul {
+                line-height: 1.5;
+                font-size: 0.9em;
+                padding-left: 15px;
+            }
+            li {
+                margin: 6px 0;
+            }
+        }
+        .highlight {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #f59e0b;
+            margin: 25px 0;
+            font-size: 1.05em;
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.12);
+            color: #374151;
+            border: 1px solid rgba(245, 158, 11, 0.1);
+        }
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: #6366f1;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 1em;
+            z-index: 100;
+        }
+        
+        /* Mobile Responsive Elements */
+        @media (max-width: 768px) {
+            .slide-number {
+                top: 10px;
+                right: 15px;
+                padding: 6px 15px;
+                font-size: 0.9em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .slide-number {
+                top: 5px;
+                right: 10px;
+                padding: 4px 10px;
+                font-size: 0.8em;
+            }
+        }
+        
+        /* Navigation Controls */
+        .nav-controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            z-index: 1000;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav-btn {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .nav-btn:hover {
+            background: #4f46e5;
+            transform: scale(1.05);
+        }
+        .nav-btn:disabled {
+            background: #d1d5db;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .slide-counter {
+            color: white;
+            font-size: 14px;
+            margin: 0 10px;
+            white-space: nowrap;
+        }
+        
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .nav-controls {
+                bottom: 15px;
+                padding: 10px 15px;
+                gap: 10px;
+                max-width: 90vw;
+            }
+            .nav-btn {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+            .slide-counter {
+                font-size: 12px;
+                margin: 0 5px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-controls {
+                bottom: 10px;
+                padding: 8px 12px;
+                gap: 8px;
+                flex-direction: column;
+                border-radius: 15px;
+            }
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+                min-width: 80px;
+            }
+            .slide-counter {
+                font-size: 11px;
+                order: -1;
+            }
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: #6366f1;
+            transition: width 0.3s ease;
+            z-index: 1001;
+        }
+        
+        /* AI Tool Links */
+        .ai-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 8px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
+        }
+        .ai-link:hover {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35);
+        }
+        .links-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+        }
+        
+        /* Mobile Links */
+        @media (max-width: 768px) {
+            .ai-link {
+                padding: 8px 15px;
+                margin: 5px;
+                font-size: 0.9em;
+                border-radius: 20px;
+            }
+            .ai-link:hover {
+                transform: none;
+            }
+            .links-section {
+                padding: 15px;
+                margin: 20px 0;
+                border-radius: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .ai-link {
+                padding: 6px 12px;
+                margin: 3px;
+                font-size: 0.8em;
+                border-radius: 15px;
+                display: block;
+                margin-bottom: 8px;
+            }
+            .links-section {
+                padding: 10px;
+                margin: 15px 0;
+                border-radius: 10px;
+            }
+        }
+        
+        /* Keyboard shortcuts info */
+        .shortcuts {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 1000;
+        }
+        
+        /* Hide shortcuts on mobile to save space */
+        @media (max-width: 768px) {
+            .shortcuts {
+                display: none;
+            }
+        }
+        
+        @media print {
+            .slide {
+                width: 100%;
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+                display: block !important;
+            }
+            .nav-controls, .progress-bar, .shortcuts {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="progress-bar" id="progressBar"></div>
+        <div class="shortcuts">
+            <div>← → Arrow keys to navigate</div>
+            <div>Space: Next slide</div>
+            <div>F: Fullscreen</div>
+        </div>
+
+<!-- Slide 1: Title -->
+<div class="slide active">
+    <div class="slide-number">1/12</div>
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 80vh; text-align: center;">
+        <h1 style="font-size: clamp(2em, 8vw, 4em); margin-bottom: 30px; border: none; background: linear-gradient(135deg, #6b73ff, #9c88ff, #c4b5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Generative AI Tools for Research</h1>
+        <h2 style="color: #4a5568; font-weight: normal; font-size: clamp(1.2em, 5vw, 2.5em); margin-bottom: 30px;">Modern AI Technologies and Their Applications in Research</h2>
+        <div style="font-size: clamp(0.9em, 2.5vw, 1.2em); color: #6b46c1; margin-bottom: 20px; font-weight: 600;">
+            <p>By Dr. Muhammad Kamran</p>
+        </div>
+        <div style="font-size: clamp(1em, 3vw, 1.5em); color: #6b46c1; margin-bottom: 60px; font-weight: 500;">
+            <p>February 2026</p>
+            <p>A Comprehensive Overview</p>
+        </div>
+        
+        <div class="links-section" style="max-width: 90vw; width: 100%;">
+            <h3 style="color: #4a5568; margin-bottom: 25px; font-size: clamp(1.2em, 4vw, 2em);">🚀 Quick Access Links:</h3>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                <a href="https://chat.openai.com" target="_blank" class="ai-link">🤖 ChatGPT</a>
+                <a href="https://claude.ai" target="_blank" class="ai-link">🧠 Claude</a>
+                <a href="https://gemini.google.com" target="_blank" class="ai-link">💎 Google Gemini</a>
+                <a href="https://copilot.microsoft.com" target="_blank" class="ai-link">✈️ Microsoft Copilot</a>
+                <a href="https://perplexity.ai" target="_blank" class="ai-link">🔍 Perplexity AI</a>
+                <a href="https://github.com/features/copilot" target="_blank" class="ai-link">💻 GitHub Copilot</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 2: Introduction -->
+<div class="slide">
+    <div class="slide-number">2/12</div>
+    <h1>Introduction to Generative AI</h1>
+    
+    <h2>What is Generative AI?</h2>
+    <ul>
+        <li>AI systems that create new content (text, images, code, audio)</li>
+        <li>Based on large language models and neural networks</li>
+        <li>Trained on vast datasets to understand patterns</li>
+        <li>Revolutionary impact on research and education</li>
+    </ul>
+
+    <div class="highlight">
+        <h3>Key Characteristics:</h3>
+        <ul>
+            <li><strong>Creative:</strong> Generates original content</li>
+            <li><strong>Contextual:</strong> Understands and maintains context</li>
+            <li><strong>Versatile:</strong> Multiple applications across domains</li>
+            <li><strong>Interactive:</strong> Conversational interfaces</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 3: ChatGPT -->
+<div class="slide">
+    <div class="slide-number">3/12</div>
+    <h1>ChatGPT (OpenAI)</h1>
+    
+    <div class="tool-card">
+        <h2>Overview:</h2>
+        <ul>
+            <li>Developed by OpenAI</li>
+            <li>Based on GPT (Generative Pre-trained Transformer)</li>
+            <li>Multiple versions: GPT-3.5, GPT-4, GPT-4 Turbo</li>
+        </ul>
+
+        <h3>Key Features:</h3>
+        <ul>
+            <li>Natural language conversations</li>
+            <li>Code generation and debugging</li>
+            <li>Text summarization and analysis</li>
+            <li>Creative writing assistance</li>
+        </ul>
+    </div>
+
+    <div class="research-apps">
+        <h3>Research Applications:</h3>
+        <ul>
+            <li><strong>Literature Review:</strong> Summarizing research papers</li>
+            <li><strong>Data Analysis:</strong> Interpreting statistical results</li>
+            <li><strong>Hypothesis Generation:</strong> Brainstorming research ideas</li>
+            <li><strong>Academic Writing:</strong> Drafting and editing papers</li>
+            <li><strong>Survey Design:</strong> Creating questionnaires</li>
+            <li><strong>Code Development:</strong> Research software and scripts</li>
+        </ul>
+        
+        <div class="example-box">
+            <h4 style="color: #4a5568; margin-bottom: 10px;">💡 Practical Example:</h4>
+            <p style="font-style: italic; color: #4a5568;">
+                "Summarize the key findings from 10 research papers about machine learning in healthcare, 
+                identify common themes, and suggest 3 potential research gaps for future studies."
+            </p>
+        </div>
+    </div>
+    
+    <div class="links-section">
+        <a href="https://chat.openai.com" target="_blank" class="ai-link">Try ChatGPT</a>
+        <a href="https://openai.com/pricing" target="_blank" class="ai-link">Pricing Plans</a>
+        <a href="https://platform.openai.com/docs" target="_blank" class="ai-link">API Documentation</a>
+    </div>
+</div>
+
+<!-- Slide 4: Claude -->
+<div class="slide">
+    <div class="slide-number">4/12</div>
+    <h1>Claude (Anthropic)</h1>
+    
+    <div class="tool-card">
+        <h2>Overview:</h2>
+        <ul>
+            <li>Developed by Anthropic</li>
+            <li>Focus on safety and helpfulness</li>
+            <li>Constitutional AI approach</li>
+        </ul>
+
+        <h3>Key Features:</h3>
+        <ul>
+            <li>Long-form document analysis</li>
+            <li>Ethical reasoning capabilities</li>
+            <li>Code review and analysis</li>
+            <li>Complex problem-solving</li>
+        </ul>
+    </div>
+
+    <div class="research-apps">
+        <h3>Research Applications:</h3>
+        <ul>
+            <li><strong>Ethical Research Review:</strong> Analyzing research ethics</li>
+            <li><strong>Policy Analysis:</strong> Reviewing policies and regulations</li>
+            <li><strong>Legal Research:</strong> Understanding compliance requirements</li>
+            <li><strong>Qualitative Data Analysis:</strong> Coding interview data</li>
+            <li><strong>Grant Writing:</strong> Proposal development assistance</li>
+            <li><strong>Peer Review:</strong> Supporting manuscript review</li>
+        </ul>
+        
+        <div class="example-box">
+            <h4 style="color: #2c3e50; margin-bottom: 10px;">💡 Practical Example:</h4>
+            <p style="font-style: italic; color: #2c3e50;">
+                "Review this research proposal for ethical considerations, identify potential risks to participants, 
+                and suggest improvements for informed consent procedures in a study involving vulnerable populations."
+            </p>
+        </div>
+    </div>
+    
+    <div class="links-section">
+        <a href="https://claude.ai" target="_blank" class="ai-link">Try Claude</a>
+        <a href="https://www.anthropic.com/claude" target="_blank" class="ai-link">Learn More</a>
+        <a href="https://docs.anthropic.com" target="_blank" class="ai-link">API Docs</a>
+    </div>
+</div>
+
+<!-- Slide 5: Google Gemini -->
+<div class="slide">
+    <div class="slide-number">5/12</div>
+    <h1>Google Gemini (Bard)</h1>
+    
+    <div class="tool-card">
+        <h2>Overview:</h2>
+        <ul>
+            <li>Google's multimodal AI system</li>
+            <li>Integration with Google services</li>
+            <li>Real-time information access</li>
+        </ul>
+
+        <h3>Key Features:</h3>
+        <ul>
+            <li>Multimodal capabilities (text, images, code)</li>
+            <li>Real-time web search integration</li>
+            <li>Google Workspace integration</li>
+            <li>Multiple model sizes (Ultra, Pro, Nano)</li>
+        </ul>
+    </div>
+
+    <div class="research-apps">
+        <h3>Research Applications:</h3>
+        <ul>
+            <li><strong>Current Information Research:</strong> Latest data and trends</li>
+            <li><strong>Image Analysis:</strong> Processing research images</li>
+            <li><strong>Collaborative Research:</strong> Google Docs/Sheets integration</li>
+            <li><strong>Market Research:</strong> Real-time data collection</li>
+            <li><strong>Scientific Literature Search:</strong> Recent publications</li>
+            <li><strong>Data Visualization:</strong> Charts and graphs creation</li>
+        </ul>
+        
+        <div class="example-box">
+            <h4 style="color: #2c3e50; margin-bottom: 10px;">💡 Practical Example:</h4>
+            <p style="font-style: italic; color: #2c3e50;">
+                "Analyze this research diagram, extract key data points, create a summary table in Google Sheets, 
+                and find the latest 2026 publications related to this topic for comparison."
+            </p>
+        </div>
+    </div>
+    
+    <div class="links-section">
+        <a href="https://gemini.google.com" target="_blank" class="ai-link">Try Gemini</a>
+        <a href="https://ai.google.dev" target="_blank" class="ai-link">Developer Resources</a>
+        <a href="https://workspace.google.com/products/duet-ai/" target="_blank" class="ai-link">Workspace Integration</a>
+    </div>
+</div>
+
+<!-- Slide 6: Microsoft Copilot -->
+<div class="slide">
+    <div class="slide-number">6/12</div>
+    <h1>Microsoft Copilot</h1>
+    
+    <div class="tool-card">
+        <h2>Overview:</h2>
+        <ul>
+            <li>Microsoft's AI assistant</li>
+            <li>Integration with Microsoft 365</li>
+            <li>Based on GPT technology</li>
+        </ul>
+
+        <h3>Key Features:</h3>
+        <ul>
+            <li>Office suite integration</li>
+            <li>Code assistance in Visual Studio</li>
+            <li>Web browsing capabilities</li>
+            <li>Enterprise security features</li>
+        </ul>
+    </div>
+
+    <div class="research-apps">
+        <h3>Research Applications:</h3>
+        <ul>
+            <li><strong>Document Creation:</strong> Research reports and presentations</li>
+            <li><strong>Data Analysis:</strong> Excel processing and visualization</li>
+            <li><strong>Academic Presentations:</strong> PowerPoint generation</li>
+            <li><strong>Research Collaboration:</strong> Teams integration</li>
+            <li><strong>Statistical Analysis:</strong> Advanced Excel functions</li>
+            <li><strong>Project Management:</strong> Research timelines</li>
+        </ul>
+        
+        <div class="example-box">
+            <h4 style="color: #2c3e50; margin-bottom: 10px;">💡 Practical Example:</h4>
+            <p style="font-style: italic; color: #2c3e50;">
+                "Create a PowerPoint presentation from my research data in Excel, generate charts showing correlation 
+                between variables, and draft a 10-slide presentation for my thesis defense."
+            </p>
+        </div>
+    </div>
+    
+    <div class="links-section">
+        <a href="https://copilot.microsoft.com" target="_blank" class="ai-link">Try Copilot</a>
+        <a href="https://www.microsoft.com/en-us/microsoft-365/microsoft-copilot" target="_blank" class="ai-link">Microsoft 365 Copilot</a>
+        <a href="https://learn.microsoft.com/en-us/copilot/" target="_blank" class="ai-link">Documentation</a>
+    </div>
+</div>
+
+<!-- Slide 7: Perplexity AI -->
+<div class="slide">
+    <div class="slide-number">7/12</div>
+    <h1>Perplexity AI</h1>
+    
+    <div class="tool-card">
+        <h2>Overview:</h2>
+        <ul>
+            <li>AI-powered search engine</li>
+            <li>Real-time information retrieval</li>
+            <li>Source citation and verification</li>
+        </ul>
+
+        <h3>Key Features:</h3>
+        <ul>
+            <li>Conversational search interface</li>
+            <li>Source attribution</li>
+            <li>Real-time web crawling</li>
+            <li>Academic and professional modes</li>
+        </ul>
+    </div>
+
+    <div class="research-apps">
+        <h3>Research Applications:</h3>
+        <ul>
+            <li><strong>Academic Research:</strong> Finding and citing sources</li>
+            <li><strong>Fact Checking:</strong> Verifying information accuracy</li>
+            <li><strong>Current Events Research:</strong> Latest field developments</li>
+            <li><strong>Comparative Analysis:</strong> Different perspectives</li>
+            <li><strong>Background Research:</strong> Quick topic overviews</li>
+            <li><strong>Citation Management:</strong> Proper source attribution</li>
+        </ul>
+        
+        <div class="example-box">
+            <h4 style="color: #2c3e50; margin-bottom: 10px;">💡 Practical Example:</h4>
+            <p style="font-style: italic; color: #2c3e50;">
+                "Find recent studies on climate change impact on agriculture, provide proper citations, 
+                fact-check the statistics, and compare findings from different geographical regions."
+            </p>
+        </div>
+    </div>
+    
+    <div class="links-section">
+        <a href="https://perplexity.ai" target="_blank" class="ai-link">Try Perplexity</a>
+        <a href="https://www.perplexity.ai/pro" target="_blank" class="ai-link">Pro Features</a>
+        <a href="https://docs.perplexity.ai" target="_blank" class="ai-link">API Access</a>
+    </div>
+</div>
+
+<!-- Slide 8: GitHub Copilot -->
+<div class="slide">
+    <div class="slide-number">8/12</div>
+    <h1>GitHub Copilot</h1>
+    
+    <div class="tool-card">
+        <h2>Overview:</h2>
+        <ul>
+            <li>AI pair programmer by GitHub and OpenAI</li>
+            <li>Code generation and completion</li>
+            <li>Development environment integration</li>
+        </ul>
+
+        <h3>Key Features:</h3>
+        <ul>
+            <li>Real-time code suggestions</li>
+            <li>Multiple programming languages</li>
+            <li>Context-aware completions</li>
+            <li>Documentation generation</li>
+        </ul>
+    </div>
+
+    <div class="research-apps">
+        <h3>Research Applications:</h3>
+        <ul>
+            <li><strong>Research Software Development:</strong> Analysis tools</li>
+            <li><strong>Data Processing Scripts:</strong> Workflow automation</li>
+            <li><strong>Statistical Computing:</strong> R, Python, MATLAB assistance</li>
+            <li><strong>Web Scraping:</strong> Data collection automation</li>
+            <li><strong>Machine Learning:</strong> Model development</li>
+            <li><strong>Research Reproducibility:</strong> Documented code</li>
+        </ul>
+        
+        <div class="example-box">
+            <h4 style="color: #2c3e50; margin-bottom: 10px;">💡 Practical Example:</h4>
+            <p style="font-style: italic; color: #2c3e50;">
+                "Write a Python script to scrape research data from academic websites, 
+                clean the dataset, perform statistical analysis, and create visualizations 
+                with proper documentation for reproducibility."
+            </p>
+        </div>
+    </div>
+    
+    <div class="links-section">
+        <a href="https://github.com/features/copilot" target="_blank" class="ai-link">GitHub Copilot</a>
+        <a href="https://docs.github.com/en/copilot" target="_blank" class="ai-link">Documentation</a>
+        <a href="https://github.com/pricing" target="_blank" class="ai-link">Pricing</a>
+    </div>
+</div>
+
+<!-- Slide 9: Specialized Tools -->
+<div class="slide">
+    <div class="slide-number">9/12</div>
+    <h1>Specialized AI Tools for Research</h1>
+    
+    <div class="tool-card">
+        <h2>Additional Tools:</h2>
+        
+        <h3>Notion AI</h3>
+        <ul>
+            <li>Research note organization</li>
+            <li>Content summarization</li>
+            <li>Database management</li>
+        </ul>
+
+        <h3>Grammarly AI</h3>
+        <ul>
+            <li>Academic writing enhancement</li>
+            <li>Grammar and style checking</li>
+            <li>Plagiarism detection</li>
+        </ul>
+
+        <h3>Jasper AI</h3>
+        <ul>
+            <li>Marketing research content</li>
+            <li>Survey creation</li>
+            <li>Report writing</li>
+        </ul>
+    </div>
+
+    <div class="research-apps">
+        <h3>Research Applications:</h3>
+        <ul>
+            <li><strong>Content Creation:</strong> Research blogs and articles</li>
+            <li><strong>Survey Development:</strong> Questionnaire design</li>
+            <li><strong>Report Writing:</strong> Professional research reports</li>
+        </ul>
+    </div>
+    
+    <div class="links-section">
+        <a href="https://notion.so/product/ai" target="_blank" class="ai-link">Notion AI</a>
+        <a href="https://grammarly.com" target="_blank" class="ai-link">Grammarly</a>
+        <a href="https://jasper.ai" target="_blank" class="ai-link">Jasper AI</a>
+        <a href="https://writesonic.com" target="_blank" class="ai-link">Writesonic</a>
+    </div>
+</div>
+
+<!-- Slide 10: Research Domain Applications -->
+<div class="slide">
+    <div class="slide-number">10/12</div>
+    <h1>Research Domain Applications</h1>
+    
+    <h2>By Research Field:</h2>
+
+    <div class="tool-card">
+        <h3>Social Sciences:</h3>
+        <ul>
+            <li>Survey design and analysis</li>
+            <li>Qualitative data coding</li>
+            <li>Literature reviews</li>
+            <li>Policy analysis</li>
+        </ul>
+
+        <h3>Natural Sciences:</h3>
+        <ul>
+            <li>Data analysis and visualization</li>
+            <li>Hypothesis generation</li>
+            <li>Lab report writing</li>
+            <li>Research proposal development</li>
+        </ul>
+    </div>
+
+    <div class="research-apps">
+        <h3>Computer Science:</h3>
+        <ul>
+            <li>Algorithm development</li>
+            <li>Code optimization</li>
+            <li>Technical documentation</li>
+            <li>System design</li>
+        </ul>
+
+        <h3>Business Research:</h3>
+        <ul>
+            <li>Market analysis</li>
+            <li>Consumer behavior studies</li>
+            <li>Financial modeling</li>
+            <li>Competitive analysis</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 11: Best Practices -->
+<div class="slide">
+    <div class="slide-number">11/12</div>
+    <h1>Best Practices for Research Use</h1>
+    
+    <h2>Guidelines for Effective Use:</h2>
+
+    <div class="tool-card">
+        <h3>Verification:</h3>
+        <ul>
+            <li>Always verify AI-generated information</li>
+            <li>Cross-check with primary sources</li>
+            <li>Use multiple AI tools for comparison</li>
+        </ul>
+
+        <h3>Ethics:</h3>
+        <ul>
+            <li>Maintain academic integrity</li>
+            <li>Proper attribution of AI assistance</li>
+            <li>Respect copyright and intellectual property</li>
+        </ul>
+    </div>
+
+    <div class="research-apps">
+        <h3>Quality Control:</h3>
+        <ul>
+            <li>Human oversight required</li>
+            <li>Critical evaluation of outputs</li>
+            <li>Iterative refinement process</li>
+        </ul>
+
+        <h3>Data Security:</h3>
+        <ul>
+            <li>Protect sensitive research data</li>
+            <li>Understand AI tool privacy policies</li>
+            <li>Use institutional approved tools</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 12: Future -->
+<div class="slide">
+    <div class="slide-number">12/12</div>
+    <h1>Future of AI in Research</h1>
+    
+    <div class="tool-card">
+        <h2>Emerging Trends:</h2>
+        
+        <h3>Multimodal AI:</h3>
+        <ul>
+            <li>Integration of text, image, audio, and video</li>
+            <li>Enhanced research capabilities</li>
+            <li>Richer data analysis</li>
+        </ul>
+
+        <h3>Specialized Research AI:</h3>
+        <ul>
+            <li>Domain-specific AI tools</li>
+            <li>Scientific discovery acceleration</li>
+            <li>Automated hypothesis testing</li>
+        </ul>
+
+        <h3>Collaborative AI:</h3>
+        <ul>
+            <li>AI-human research teams</li>
+            <li>Enhanced creativity and productivity</li>
+            <li>New research methodologies</li>
+        </ul>
+    </div>
+
+    <div class="highlight">
+        <h2>Key Takeaways:</h2>
+        <ul>
+            <li>Choose the right tool for specific research needs</li>
+            <li>Maintain critical thinking and verification</li>
+            <li>Embrace AI as research accelerator, not replacement</li>
+            <li>Stay updated with evolving capabilities</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
+        <!-- Navigation Controls -->
+        <div class="nav-controls">
+            <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+            <span class="slide-counter">
+                <span id="currentSlide">1</span> / <span id="totalSlides">12</span>
+            </span>
+            <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+            <button class="nav-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        // Initialize
+        document.getElementById('totalSlides').textContent = totalSlides;
+        updateSlide();
+        
+        function changeSlide(direction) {
+            slides[currentSlideIndex].classList.remove('active');
+            currentSlideIndex += direction;
+            
+            if (currentSlideIndex >= totalSlides) {
+                currentSlideIndex = 0;
+            } else if (currentSlideIndex < 0) {
+                currentSlideIndex = totalSlides - 1;
+            }
+            
+            updateSlide();
+        }
+        
+        function updateSlide() {
+            slides[currentSlideIndex].classList.add('active');
+            document.getElementById('currentSlide').textContent = currentSlideIndex + 1;
+            
+            // Update progress bar
+            const progress = ((currentSlideIndex + 1) / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlideIndex === 0;
+            document.getElementById('nextBtn').disabled = currentSlideIndex === totalSlides - 1;
+        }
+        
+        function goToSlide(index) {
+            slides[currentSlideIndex].classList.remove('active');
+            currentSlideIndex = index;
+            updateSlide();
+        }
+        
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case 'ArrowLeft':
+                    if (currentSlideIndex > 0) changeSlide(-1);
+                    break;
+                case 'ArrowRight':
+                case ' ':
+                    if (currentSlideIndex < totalSlides - 1) changeSlide(1);
+                    break;
+                case 'Home':
+                    goToSlide(0);
+                    break;
+                case 'End':
+                    goToSlide(totalSlides - 1);
+                    break;
+                case 'f':
+                case 'F':
+                    toggleFullscreen();
+                    break;
+            }
+        });
+        
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0 && currentSlideIndex < totalSlides - 1) {
+                    // Swipe left - next slide
+                    changeSlide(1);
+                } else if (diff < 0 && currentSlideIndex > 0) {
+                    // Swipe right - previous slide
+                    changeSlide(-1);
+                }
+            }
+        }
+        
+        // Auto-hide shortcuts after 5 seconds
+        setTimeout(function() {
+            const shortcuts = document.querySelector('.shortcuts');
+            if (shortcuts) {
+                shortcuts.style.opacity = '0.3';
+                shortcuts.style.transition = 'opacity 0.5s ease';
+            }
+        }, 5000);
+        
+        // Show shortcuts on hover
+        document.querySelector('.shortcuts').addEventListener('mouseenter', function() {
+            this.style.opacity = '1';
+        });
+        
+        document.querySelector('.shortcuts').addEventListener('mouseleave', function() {
+            this.style.opacity = '0.3';
+        });
+    </script>
+</body>
+</html>
+        
+        /* Example boxes responsive */
+        .example-box {
+            background: rgba(255,255,255,0.6);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid rgba(168, 179, 255, 0.2);
+        }
+        
+        .example-box h4 {
+            color: #4a5568 !important;
+        }
+        
+        .example-box p {
+            color: #4a5568 !important;
+        }
+        
+        @media (max-width: 768px) {
+            .example-box {
+                padding: 10px;
+                margin-top: 15px;
+                font-size: 0.9em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .example-box {
+                padding: 8px;
+                margin-top: 10px;
+                font-size: 0.8em;
+            }
+        }
+        
+        /* Landscape Mobile Optimization */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .slide {
+                padding: 15px 30px;
+            }
+            .nav-controls {
+                bottom: 5px;
+                padding: 5px 15px;
+            }
+            .slide-number {
+                top: 5px;
+                right: 10px;
+                padding: 3px 8px;
+                font-size: 0.7em;
+            }
+        }
+        
+        /* Very small screens */
+        @media (max-width: 320px) {
+            .slide {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.5em !important;
+            }
+            h2 {
+                font-size: 1.2em !important;
+            }
+            h3 {
+                font-size: 1em !important;
+            }
+            .ai-link {
+                font-size: 0.7em;
+                padding: 4px 8px;
+            }
+        }
+    </style>
+</head>
+<body>

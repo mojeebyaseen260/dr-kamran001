@@ -1,0 +1,45 @@
+.presentation-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Slide Animation */
+@keyframes slideIn {
+  from { 
+    opacity: 0; 
+    transform: translateX(50px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .presentation-container {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .presentation-container {
+    font-size: 12px;
+  }
+}
+
+/* Landscape Mobile Optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+  .presentation-container {
+    padding: 15px 30px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 320px) {
+  .presentation-container {
+    padding: 10px;
+  }
+}
