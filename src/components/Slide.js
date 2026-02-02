@@ -61,7 +61,26 @@ const Slide = ({ data, slideNumber, totalSlides }) => {
                 ))}
               </ul>
               
-              {data.example && (
+              {data.examples && (
+                <div className="examples-container">
+                  <h4>💡 Practical Examples:</h4>
+                  {data.examples.map((example, index) => (
+                    <div key={index} className="example-box">
+                      <h5>{example.title}</h5>
+                      <div className="prompt-section">
+                        <strong>Prompt:</strong>
+                        <p className="prompt-text">"{example.prompt}"</p>
+                      </div>
+                      <div className="result-section">
+                        <strong>Result:</strong>
+                        <p className="result-text">{example.result}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+              
+              {data.example && !data.examples && (
                 <div className="example-box">
                   <h4>💡 Practical Example:</h4>
                   <p>{data.example}</p>

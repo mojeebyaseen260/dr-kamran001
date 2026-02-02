@@ -65,7 +65,23 @@ export const slidesData = [
       { title: 'Survey Design', description: 'Creating questionnaires' },
       { title: 'Code Development', description: 'Research software and scripts' }
     ],
-    example: 'Summarize the key findings from 10 research papers about machine learning in healthcare, identify common themes, and suggest 3 potential research gaps for future studies.',
+    examples: [
+      {
+        title: '📝 Research Paper Writing',
+        prompt: 'Write an abstract for my research paper on "Impact of Social Media on Student Mental Health". Include methodology, key findings, and implications.',
+        result: 'Generated a 250-word structured abstract with proper academic formatting'
+      },
+      {
+        title: '📊 Data Interpretation',
+        prompt: 'Analyze this survey data: 65% students report anxiety, 45% depression, 78% use social media >4hrs daily. What correlations and recommendations can you suggest?',
+        result: 'Provided statistical insights, correlation analysis, and actionable recommendations'
+      },
+      {
+        title: '🔍 Literature Gap Analysis',
+        prompt: 'Based on these 15 research papers on AI in education, identify 5 unexplored research areas and suggest methodology for each.',
+        result: 'Identified specific gaps with detailed research proposals and methodologies'
+      }
+    ],
     links: [
       { name: 'Try ChatGPT', url: 'https://chat.openai.com' },
       { name: 'Pricing Plans', url: 'https://openai.com/pricing' },
@@ -96,7 +112,23 @@ export const slidesData = [
       { title: 'Grant Writing', description: 'Proposal development assistance' },
       { title: 'Peer Review', description: 'Supporting manuscript review' }
     ],
-    example: 'Review this research proposal for ethical considerations, identify potential risks to participants, and suggest improvements for informed consent procedures in a study involving vulnerable populations.',
+    examples: [
+      {
+        title: '⚖️ Ethics Review',
+        prompt: 'Review my research proposal involving interviews with cancer patients. Identify ethical concerns, suggest IRB improvements, and recommend consent procedures.',
+        result: 'Detailed ethical analysis with specific IRB recommendations and consent form improvements'
+      },
+      {
+        title: '💰 Grant Proposal Writing',
+        prompt: 'Help me write a compelling 2-page research proposal for NSF funding on "AI-powered early disease detection" with budget justification.',
+        result: 'Professional grant proposal with clear objectives, methodology, and detailed budget breakdown'
+      },
+      {
+        title: '📋 Policy Analysis',
+        prompt: 'Analyze the new EU AI Act implications for my healthcare AI research. What compliance requirements should I consider?',
+        result: 'Comprehensive policy analysis with actionable compliance checklist and recommendations'
+      }
+    ],
     links: [
       { name: 'Try Claude', url: 'https://claude.ai' },
       { name: 'Learn More', url: 'https://www.anthropic.com/claude' },
@@ -127,7 +159,23 @@ export const slidesData = [
       { title: 'Scientific Literature Search', description: 'Recent publications' },
       { title: 'Data Visualization', description: 'Charts and graphs creation' }
     ],
-    example: 'Analyze this research diagram, extract key data points, create a summary table in Google Sheets, and find the latest 2026 publications related to this topic for comparison.',
+    examples: [
+      {
+        title: '🖼️ Research Image Analysis',
+        prompt: 'Analyze this brain MRI scan image, identify key anatomical structures, and suggest what pathological conditions might be visible.',
+        result: 'Detailed anatomical analysis with potential pathology identification and medical terminology'
+      },
+      {
+        title: '📈 Real-time Market Research',
+        prompt: 'Find the latest 2026 trends in renewable energy adoption globally, create a summary with statistics and key market players.',
+        result: 'Current market analysis with live data, trends, and comprehensive industry overview'
+      },
+      {
+        title: '🎨 Research Poster Design',
+        prompt: 'Create a visual research poster layout for my study on "Urban Air Quality Monitoring using IoT Sensors" with infographics.',
+        result: 'Professional poster design with data visualizations, charts, and academic formatting'
+      }
+    ],
     links: [
       { name: 'Try Gemini', url: 'https://gemini.google.com' },
       { name: 'Developer Resources', url: 'https://ai.google.dev' },
@@ -158,7 +206,23 @@ export const slidesData = [
       { title: 'Statistical Analysis', description: 'Advanced Excel functions' },
       { title: 'Project Management', description: 'Research timelines' }
     ],
-    example: 'Create a PowerPoint presentation from my research data in Excel, generate charts showing correlation between variables, and draft a 10-slide presentation for my thesis defense.',
+    examples: [
+      {
+        title: '📊 Excel Data Analysis',
+        prompt: 'Analyze this dataset of 1000 student survey responses, create pivot tables, correlation matrices, and generate insights about study habits vs academic performance.',
+        result: 'Automated Excel analysis with charts, statistical summaries, and actionable insights'
+      },
+      {
+        title: '🎯 PowerPoint Research Presentation',
+        prompt: 'Create a 15-slide presentation for my PhD defense on "Machine Learning in Medical Diagnosis" with professional templates and speaker notes.',
+        result: 'Complete presentation with academic formatting, visual aids, and detailed speaker notes'
+      },
+      {
+        title: '📝 Research Report Generation',
+        prompt: 'Convert my research notes and data into a formal 20-page research report with proper citations, tables, and academic formatting in Word.',
+        result: 'Professional research report with automated formatting, citations, and structured layout'
+      }
+    ],
     links: [
       { name: 'Try Copilot', url: 'https://copilot.microsoft.com' },
       { name: 'Microsoft 365 Copilot', url: 'https://www.microsoft.com/en-us/microsoft-365/microsoft-copilot' },
@@ -189,7 +253,23 @@ export const slidesData = [
       { title: 'Background Research', description: 'Quick topic overviews' },
       { title: 'Citation Management', description: 'Proper source attribution' }
     ],
-    example: 'Find recent studies on climate change impact on agriculture, provide proper citations, fact-check the statistics, and compare findings from different geographical regions.',
+    examples: [
+      {
+        title: '🔍 Academic Source Finding',
+        prompt: 'Find peer-reviewed studies published in 2024-2026 about "CRISPR gene therapy for sickle cell disease" with proper citations and impact factors.',
+        result: 'Curated list of recent studies with full citations, journal rankings, and key findings summary'
+      },
+      {
+        title: '✅ Fact Verification',
+        prompt: 'Verify these statistics: "75% of AI startups fail within 2 years, average funding is $2.3M". Provide sources and cross-check accuracy.',
+        result: 'Detailed fact-check with multiple sources, accuracy assessment, and corrected statistics'
+      },
+      {
+        title: '📚 Literature Comparison',
+        prompt: 'Compare different perspectives on "Remote work productivity" from recent studies, highlighting conflicting findings and methodological differences.',
+        result: 'Comprehensive comparison with source attribution, methodology analysis, and balanced perspective'
+      }
+    ],
     links: [
       { name: 'Try Perplexity', url: 'https://perplexity.ai' },
       { name: 'Pro Features', url: 'https://www.perplexity.ai/pro' },
@@ -220,7 +300,23 @@ export const slidesData = [
       { title: 'Machine Learning', description: 'Model development' },
       { title: 'Research Reproducibility', description: 'Documented code' }
     ],
-    example: 'Write a Python script to scrape research data from academic websites, clean the dataset, perform statistical analysis, and create visualizations with proper documentation for reproducibility.',
+    examples: [
+      {
+        title: '🐍 Python Data Analysis Script',
+        prompt: '# Create a script to analyze survey data, perform statistical tests, and generate publication-ready plots',
+        result: 'Complete Python script with pandas, scipy, matplotlib - statistical analysis and professional visualizations'
+      },
+      {
+        title: '🤖 Machine Learning Pipeline',
+        prompt: '# Build a complete ML pipeline for predicting student performance using scikit-learn with cross-validation',
+        result: 'Full ML pipeline with data preprocessing, model selection, hyperparameter tuning, and evaluation metrics'
+      },
+      {
+        title: '📊 R Statistical Analysis',
+        prompt: '# Perform ANOVA analysis on experimental data with post-hoc tests and effect size calculations',
+        result: 'Comprehensive R script with statistical tests, assumptions checking, and formatted output tables'
+      }
+    ],
     links: [
       { name: 'GitHub Copilot', url: 'https://github.com/features/copilot' },
       { name: 'Documentation', url: 'https://docs.github.com/en/copilot' },
@@ -261,6 +357,16 @@ export const slidesData = [
               'Report writing'
             ]
           }
+        ]
+      },
+      {
+        type: 'research-apps',
+        title: 'Practical Examples:',
+        content: [
+          '📝 Notion AI: "Organize my 50 research papers by themes, create summary database with key findings, methodology, and citation info"',
+          '✍️ Grammarly: "Review my 10,000-word dissertation for academic tone, clarity, and citation formatting errors"',
+          '📊 Jasper AI: "Create engaging social media content to promote my research findings to general audience"',
+          '🎨 Canva AI: "Design infographic showing my research methodology and key statistics for conference poster"'
         ]
       }
     ]

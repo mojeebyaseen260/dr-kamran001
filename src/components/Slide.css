@@ -165,9 +165,60 @@ li {
   margin-bottom: 10px;
 }
 
+.example-box h5 {
+  color: #6366f1;
+  margin-bottom: 12px;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
 .example-box p {
   color: #4a5568;
   font-style: italic;
+}
+
+.examples-container {
+  margin-top: 20px;
+}
+
+.examples-container h4 {
+  color: #4a5568;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.prompt-section {
+  margin-bottom: 10px;
+}
+
+.prompt-section strong {
+  color: #6366f1;
+  font-weight: 600;
+}
+
+.prompt-text {
+  background: #f8fafc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border-left: 3px solid #6366f1;
+  margin: 5px 0;
+  font-style: italic;
+  color: #374151;
+}
+
+.result-section strong {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.result-text {
+  background: #f0fdf4;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border-left: 3px solid #10b981;
+  margin: 5px 0;
+  color: #374151;
+  font-style: normal;
 }
 
 /* Links */
@@ -293,6 +344,19 @@ li {
     margin-top: 15px;
     font-size: 0.9em;
   }
+  
+  .examples-container h4 {
+    font-size: 1em;
+  }
+  
+  .example-box h5 {
+    font-size: 1em;
+  }
+  
+  .prompt-text, .result-text {
+    padding: 6px 10px;
+    font-size: 0.9em;
+  }
 }
 
 @media (max-width: 480px) {
@@ -365,6 +429,19 @@ li {
   .example-box {
     padding: 8px;
     margin-top: 10px;
+    font-size: 0.8em;
+  }
+  
+  .examples-container h4 {
+    font-size: 0.9em;
+  }
+  
+  .example-box h5 {
+    font-size: 0.9em;
+  }
+  
+  .prompt-text, .result-text {
+    padding: 4px 8px;
     font-size: 0.8em;
   }
 }
